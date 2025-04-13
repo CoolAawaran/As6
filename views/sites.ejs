@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>National Historic Sites</title>
+  <link rel="stylesheet" href="/css/main.css" />
+
+</head>
+
+<body tabindex="-1">
+
+  <%- include('partials/navbar', {page: '/sites'}) %>
+
+  <br />
+
+  <div class="container mx-auto p-4">
+
+    <div class="hero bg-base-200 rounded-lg p-6">
+      <div class="hero-content text-center ">
+        <div class="max-w-md">
+          <h1 class="text-5xl font-bold">Site Collection<button class="btn btn--base-content">(<%= sites.length %>)</button></h1>
+
+          <p class="py-6">Browse all National Historic Sites.  Click buttons to filter sites by region, e.g., 
+            <a href="/sites?region=Atlantic region" class="btn btn-primary mt-2 btn-xs">Atlantic Region</a>
+            <a href="/sites?region=Central Canada" class="btn btn-primary mt-2 btn-xs">Central Canada</a>
+            <a href="/sites?region=Prairie Provinces" class="btn btn-primary mt-2 btn-xs">Prairie Provinces</a>
+            <!-- <a href="/sites?region=West Coast" class="btn btn-primary mt-2 btn-xs">West Coast</a> -->
+            <!-- <a href="/sites?region=North" class="btn btn-primary mt-2 btn-xs">North</a> -->
+            <br> or by province or territory, e.g.,
+            <!-- <a href="/sites?provinceOrTerritory=Alberta" class="btn btn-primary mt-2 btn-xs">Alberta</a> -->
+            <!-- <a href="/sites?provinceOrTerritory=British Columbia" class="btn btn-primary mt-2 btn-xs">British Columbia</a> -->
+            <a href="/sites?provinceOrTerritory=Ontario" class="btn btn-primary mt-2 btn-xs">Ontario</a>
+            <a href="/sites?provinceOrTerritory=Quebec" class="btn btn-primary mt-2 btn-xs">Quebec</a>
+            <a href="/sites?provinceOrTerritory=Yukon" class="btn btn-primary mt-2 btn-xs">Yukon</a>
+            <!-- <a href="/sites?provinceOrTerritory=Northwest Territories" class="btn btn-primary mt-2 btn-xs">Northwest Territories</a>  -->
+        </p>
+
+        </div>
+      </div>
+    </div>
+
+    <br />
+
+
+    <div class="overflow-x-auto overflow-y-hidden">
+      <table class="table table-zebra">
+        <!-- head -->
+        
+        <tbody>
+          <% sites.forEach(site=> { %>
+            <tr>
+              <td>
+                <img src="<%= site.image %>" alt="<%= site.site %>" class="h-32 rounded-lg m-3 "/>
+              </td>
+
+              <td>
+                <span class="font-bold"><%= site.site %></span> 
+              </td>
+
+              <td>
+                <span class="font-bold">Date:</span> <%= site.date %> (<%= site.dateType %>)
+                <br> <span class="font-bold">Designated:</span> <%= site.designated %> 
+              </td>
+
+              <td>
+                <span class="font-bold"><%= site.location %>,</span>
+              <!-- </td>
+
+              <td> -->
+                <a href="/sites?provinceOrTerritory=<%= site.ProvinceOrTerritory.name %>" class="btn btn-primary  mt-2 btn-xs"><%= site.ProvinceOrTerritory.name %></a>
+              </td>
+
+              <td class="w-40">
+                <a href="/sites?region=<%= site.ProvinceOrTerritory.region %>" class="btn btn-primary  mt-2 btn-xs"><%= site.ProvinceOrTerritory.region %></a>
+              </td>
+
+              <th>
+                <a href="/sites/<%= site.siteId %>" class="btn btn-primary btn-xs">details</a>
+              </th>
+
+
+            </tr>
+
+            <% }); %>
+
+        </tbody>
+
+
+      </table>
+    </div>
+  </div>
+
+</body>
+
+</html>

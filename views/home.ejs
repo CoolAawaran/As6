@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>National Historic Sites</title>
+  <link rel="stylesheet" href="/css/main.css" />
+
+</head>
+
+<body tabindex="-1">
+
+  <%- include('partials/navbar', {page: ''}) %>
+
+  <br />
+
+  <div class="container mx-auto">
+
+
+    <div class="hero bg-base-200 rounded-lg p-6">
+      <div class="hero-content text-center ">
+        <div class="max-w-md">
+          <h1 class="text-5xl font-bold">Welcome</h1>
+
+          <p class="py-6">Browse National Historic Sites located across ten provinces and three territories of Canada.</p>
+      
+          <a href="/sites" class="btn btn-primary">Get Started Now</a>
+        </div>
+      </div>
+    </div>
+
+    <br />
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div>
+
+        <div class="card bg-base-100 shadow-xl">
+          <figure>
+            <img class="w-full" src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/H%C3%B4tel_de_ville_de_Westmount.JPG/320px-H%C3%B4tel_de_ville_de_Westmount.JPG" alt="Westmount District"  />
+          </figure>
+          <div class="card-body">
+            <h2 class="card-title">Westmount District</h2>
+          
+            <p>The historic district of Westmount which epitomizes the architectural styles and trends in landscape architecture of 1890 to 1930; reflects the efforts of local citizens who, from the early 20th century onwards, sought to protect the diversity and historic integrity of the district's built environment</p>
+            <p><b>Date: </b>1874 (city incorporated) </p>
+            <p><b>Location": </b>Westmount, QC</p>
+
+            <div class="card-actions justify-end">
+              <a href="/sites/QC008" class="btn btn-primary">View</a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div>
+
+        <div class="card bg-base-100 shadow-xl">
+          <figure>
+            <img class="w-full" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/East_Block_and_Langevin_Block.jpg/320px-East_Block_and_Langevin_Block.jpg" alt="Public Grounds of the Parliament Buildings"  />
+          </figure>
+          <div class="card-body">
+            <h2 class="card-title">Public Grounds of the Parliament Buildings</h2>
+          
+            <p>The focal point for national celebrations in Ottawa; the grounds were originally designed by Calvert Vaux, and since supplemented by 18 monuments and memorials</p>
+            <p><b>Date: </b>1875 (initial completion) </p>
+            <p><b>Location": </b>Ottawa, ON</p>
+
+            <div class="card-actions justify-end">
+              <a href="/sites/ON016" class="btn btn-primary">View</a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div>
+
+        <div class="card bg-base-100 shadow-xl">
+          <figure>
+            <img class="w-full" src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Press_Building%2C_CNE_2008.jpg/320px-Press_Building%2C_CNE_2008.jpg" alt="Gouinlock Buildings"  />
+          </figure>
+          <div class="card-body">
+            <h2 class="card-title">Gouinlock Buildings / Early Exhibition Buildings</h2>
+          
+            <p>Five buildings (the Fire Hall/Police Station, Government Building, Horticulture Building, Music Building and Press Building) on the grounds of the Canadian National Exhibition; the largest and finest group of early 20th century exhibition buildings in Canada</p>
+            <p><b>Date: </b>1912 (completed) </p>
+            <p><b>Location": </b>Toronto, ON</p>
+
+            <div class="card-actions justify-end">
+              <a href="/sites/ON025" class="btn btn-primary">View</a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <br><br><br><br>
+    </div>
+
+  </div>
+  
+</body>
+
+</html>

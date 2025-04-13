@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>National Historic Sites</title>
+  <link rel="stylesheet" href="/css/main.css" />
+</head>
+
+<body tabindex="-1">
+
+  <%- include('partials/navbar', {page: '' }) %>
+
+    <div class="container mx-auto p-4">
+
+      <div class="hero bg-base-200 rounded-lg p-6">
+        <div class="hero-content text-center ">
+          <div class="max-w-md">
+            <h1 class="text-5xl font-bold">Edit Site: <%= site.site %></h1>
+
+            <p class="py-6">Use the below form to update the Site "<%= site.site %>" </p>
+
+          </div>
+        </div>
+      </div>
+
+      <br />
+
+      <form action="/editSite" method="post">
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 gap-y-0">
+          <div>
+            <div class="mb-6">
+              <label for="siteId" class="block text-gray-700 font-medium">Site ID</label>
+              <input type="text" id="siteId" name="siteId" readonly value="<%= site.siteId %>" 
+                class="w-full border border-gray-300 rounded-md px-3 py-2 focus:border-blue-300 bg-gray-200">
+            </div>
+            <div class="mb-6">
+              <label for="date" class="block text-gray-700 font-medium">Date</label>
+              <input type="number" id="date" name="date" required value="<%= site.date %>" 
+                class="w-full border border-gray-300 rounded-md px-3 py-2 focus:border-blue-300">
+            </div>
+            <div class="mb-6">
+              <label for="location" class="block text-gray-700 font-medium">Location</label>
+              <input type="text" id="location" name="location" required value="<%= site.location %>" 
+                class="w-full border border-gray-300 rounded-md px-3 py-2 focus:border-blue-300">
+            </div>
+            <div class="mb-6">
+              <label for="latitude" class="block text-gray-700 font-medium">Latitude</label>
+              <input type="number" id="latitude" name="latitude" required step="0.00000001"  value="<%= site.latitude %>" 
+                class="w-full border border-gray-300 rounded-md px-3 py-2 focus:border-blue-300">
+            </div>
+          </div>
+
+          
+          <div>
+            <div class="mb-6">
+              <label for="site" class="block text-gray-700 font-medium">Site</label>
+              <input type="text" id="site" name="site" required value="<%= site.site %>" 
+                class="w-full border border-gray-300 rounded-md px-3 py-2 focus:border-blue-300">
+            </div>
+
+            <div class="mb-6">
+              <label for="dateType" class="block text-gray-700 font-medium">Date Type</label>
+              <input type="text" id="dateType" name="dateType" required value="<%= site.dateType %>" 
+                class="w-full border border-gray-300 rounded-md px-3 py-2 focus:border-blue-300">
+            </div>
+            <div class="mb-6">
+              <label for="provinceOrTerritoryCode" class="block text-gray-700 font-medium">Province/Territory</label>
+              <select id="provinceOrTerritoryCode" name="provinceOrTerritoryCode" required  
+                class="w-full border border-gray-300 rounded-md px-3 py-2 focus:border-blue-300">
+                <% provincesAndTerritories.forEach(pat=>{ %>
+                  <option value="<%= pat.code %>" <%= (site.provinceOrTerritoryCode == pat.code) ? "selected" : "" %> > 
+                    <%= pat.name %> 
+                  </option>
+                <% }) %>
+              </select>
+            </div>
+            <div class="mb-6">
+              <label for="longitude" class="block text-gray-700 font-medium">Longitude</label>
+              <input type="number" id="longitude" name="longitude" required step="0.00000001" value="<%= site.longitude %>" 
+                class="w-full border border-gray-300 rounded-md px-3 py-2 focus:border-blue-300">
+            </div>
+          </div>
+
+          <div>
+            <div class="mb-6">
+              <label for="image" class="block text-gray-700 font-medium">Image URL</label>
+              <input type="url" id="image" name="image" required value="<%= site.image %>" 
+                class="w-full border border-gray-300 rounded-md px-3 py-2 focus:border-blue-300">
+            </div>
+            <div class="mb-6">
+              <label for="designated" class="block text-gray-700 font-medium">Designated</label>
+              <input type="number" id="designated" name="designated" required value="<%= site.designated %>" 
+                class="w-full border border-gray-300 rounded-md px-3 py-2 focus:border-blue-300">
+            </div>
+            <div class="mb-6">
+              <label for="description" class="block text-gray-700 font-medium">Description</label>
+              <textarea id="description" name="description" class="w-full border border-gray-300 rounded-md px-3 py-2 focus:border-blue-300 textarea h-32"><%= site.description %></textarea>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6 gap-y-0">
+          <div class="mt-6">
+            <button type="submit" class="btn btn-primary w-full">Update Site</button>
+          </div>
+          <div class="mt-6">
+            <a href="/deleteSite/<%= site.siteId %>" class="btn btn-error w-full">Delete Site</a>
+          </div>
+        </div>
+      </form>
+
+    </div>
+
+</body>
+</html>

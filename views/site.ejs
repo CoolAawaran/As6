@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= site.site %></title>
+  <link rel="stylesheet" href="/css/main.css" />
+  <script>
+    document.addEventListener("DOMContentLoaded", async ()=>{
+
+        let res = await fetch("http://quotable.io/random");
+        let data = await res.json();
+
+        document.getElementById("quote").innerHTML = `"${data.content}"<br />- <em>${data.author}</em>`;
+    });
+  </script>
+
+</head>
+
+<body tabindex="-1">
+
+  <%- include('partials/navbar', {page: ''}) %>
+
+  <div class="container mx-auto p-4">
+
+    <div class="hero bg-base-200 rounded-lg p-6">
+      <div class="hero-content text-center ">
+        <div class="max-w-md">
+          <h1 class="text-5xl font-bold"><%= site.site %></h1>
+
+          <p class="py-6">Below, you will find detailed information about the site: <%= site.site %></p>
+
+        </div>
+      </div>
+    </div>
+
+    <br />
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div>
+        <img class="w-full rounded-lg"
+          src="<%= site.image %>"
+          alt="image of <%= site.site %>" />
+        <br><br>
+      </div>
+      <div class="prose">
+
+        <p>
+          <span class="font-bold">Site Name: </span> <%= site.site %> <br />
+        </p>
+        <p> 
+          <span class="font-bold">Description: </span> <%= site.description %> <br />
+        </p>
+        <p> 
+          <span class="font-bold">Date: </span> <%= site.date %> (<%= site.dateType %>) <br />
+        </p>
+        <p> 
+          <span class="font-bold">Location: </span> <%= site.location %>, <%= site.ProvinceOrTerritory.name %><br />
+        </p>
+        <p> 
+          <span class="font-bold">Region: </span> <%= site.ProvinceOrTerritory.region %> <br />
+        </p>
+        <p> 
+          <span class="font-bold">Geolocation : </span> <%= site.latitude %>, <%= site.longitude %><br />
+        </p>
+        <p> 
+          <span class="font-bold">Designated: </span> <%= site.designated %>  <br /><br /><br />
+          <span id="quote"></span>
+        </p>
+        <p> 
+          <br /><br />
+        </p>
+        <p> 
+          <a class="btn btn-secondary btn-sm" href="/editSite/<%= site.siteId %>">Edit Site: <%= site.site.toUpperCase() %></a>&nbsp;&nbsp;
+          <a class="btn btn-primary btn-sm" href="#" onclick="history.back(); return false;">&nbsp;&nbsp;&nbsp;&nbsp;RETURN&nbsp;&nbsp;&nbsp;&nbsp;</a>
+        </p>
+        <p> 
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
+</body>
+
+</html>

@@ -1,0 +1,15 @@
+<h2>Register</h2>
+
+<% if (typeof successMessage !== 'undefined') { %>
+  <p><%= successMessage %></p>
+<% } else if (typeof errorMessage !== 'undefined') { %>
+  <p style="color: red;"><%= errorMessage %></p>
+<% } %>
+
+<form method="POST" action="/register">
+  <input name="userName" placeholder="Username" value="<%= typeof userName !== 'undefined' ? userName : '' %>"><br>
+  <input type="email" name="email" placeholder="Email"><br>
+  <input type="password" name="password" placeholder="Password"><br>
+  <input type="password" name="password2" placeholder="Confirm Password"><br>
+  <button type="submit">Register</button>
+</form>
